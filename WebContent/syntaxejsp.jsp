@@ -28,9 +28,6 @@
         <!-- Compare les chaînes 'hip' et 'hit'. Puisque 'p' < 't', cette EL affiche false. -->
         ${ 'hip' gt 'hit' } <br /> 
 		
-        <!-- Compare les caractères 'a' et 'b', puis les chaînes 'hip' et 'hit'. Puisque le premier test renvoie true et le second false, le résultat est false. -->
-        ${ 'a' < 'b' && 'hip' gt 'hit' } <br /> 
-		
         <!-- Compare le résultat d'un calcul à une valeur fixe. Ici, 6 x 7 vaut 42 et non pas 48, le résultat est false. -->
         ${ 6 * 7 == 48 } <br /> 
     </p>
