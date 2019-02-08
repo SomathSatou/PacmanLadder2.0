@@ -128,3 +128,10 @@ form .requis {
 .erreur {
 	color: #c00;
 }
+
+fieldset {
+	width:400px;
+	/*position: absolute;
+	right: 255 px;
+	height: 600px;*/
+}
