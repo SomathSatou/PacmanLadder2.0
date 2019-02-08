@@ -42,7 +42,7 @@
                     
                     <br/>
                     
-                    <label for="pwd2">Confirmation du mot de passe  <span class="requis">*</span></label>
+                    <label for="pwd2">Confirmation <span class="requis">*</span></label>
                     
                     <input type="password" id="pwd2" name="pwd2" value="<c:out value="${ form.pwd2 }"/>" size="20" maxlength="20" />
                     
