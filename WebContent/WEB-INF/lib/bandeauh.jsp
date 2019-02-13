@@ -37,11 +37,11 @@
 					<tr>
 						<td><label>Password:</label></td>
 						<td><input type="password" id="pwdh" name="pwdh" /></td>
-						<hiden id="redirect" name="redirect"><%= getServletContext().getRealPath("/") %></hiden>
 					</tr>
 					<tr>
 						<td></td>
 						<td><input type="Submit" value="Connexion" /></td>
+						
 					</tr>
 				</table>
 			</form>

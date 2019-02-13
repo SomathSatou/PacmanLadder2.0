@@ -17,9 +17,15 @@
 
 	<!-- page -->
 	<div class="page">
-		<div class="titrep">Inscription</div>
-		<!-- contenue de la page -->
-		<div>
+			<c:choose>
+		    <c:when test="${session.login==true}">
+			    <div>
+					<p>bienvenue <c:out value="${ session.pseudo }"/> </p> 
+			    </div>
+		    </c:when>    
+		    
+		    <c:otherwise>
+					<div>
 			<p>Désolé <c:out value="${ pseudo }" /> nous ne vous connaissons pas.</p>
 			
 			<p>Pour vous inscrire cliquez ici</p>
@@ -28,6 +34,11 @@
 			${login==true}</p>
 
 		</div>
+		    <br />
+		    </c:otherwise>
+		</c:choose>	
+		<!-- contenue de la page -->
+
 		<!-- bandeau bas de page -->
 		<a Class="bandeaub"
 			href="http://jigsaw.w3.org/css-validator/check/referer"> <img
