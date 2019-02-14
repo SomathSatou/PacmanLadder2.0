@@ -10,29 +10,27 @@
 </head>
 <body>
 	<!-- bandeau horizontal -->
-	<%@include file="lib/bandeauh.jsp"%>
+	<%@include file="bandeauh.jsp"%>
 
 	<!-- bandeau vertical -->
-	<%@include file="lib/bandeauv.jsp"%>
+	<%@include file="bandeauv.jsp"%>
 
 	<!-- page -->
 	<div class="page">
 			<c:choose>
 		    <c:when test="${session.login==true}">
+		    	<div class="titrep">Connexion</div>
 			    <div>
 					<p>bienvenue <c:out value="${ session.pseudo }"/> </p> 
 			    </div>
 		    </c:when>    
 		    
 		    <c:otherwise>
-					<div>
-			<p>Désolé <c:out value="${ pseudo }" /> nous ne vous connaissons pas.</p>
-			
-			<p>Pour vous inscrire cliquez ici</p>
+			    <div class="titrep">Connexion non valide</div>
+				<div>
+				<p>Désolé <c:out value="${ pseudo }" /> nous ne vous connaissons pas.</p>
 				
-			<p> ${ login } 
-			${login==true}</p>
-
+				<p>Pour vous inscrire cliquez <a href="/Pacman/inscription">ici</a></p>
 		</div>
 		    <br />
 		    </c:otherwise>

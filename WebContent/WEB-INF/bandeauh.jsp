@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="bandeauh">
-		<a href="SoyLuna"><img class="logo"
-			src="resources/image/Pacman.jpg" alt="coucou" /></a>
+		<a href="/Pacman"><img class="logo"
+			src="/Pacman/resources/image/Pacman.jpg" alt="coucou" /></a>
 	</div>
 	<div class="bandeauh2">
 		<p>Pac-man Ladder</p>
@@ -40,7 +40,9 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="Submit" value="Connexion" /></td>
+						<td colspan="0.5"><input type="Submit" value="Connexion" />
+						<input type="Button" onclick=window.location.href='/Pacman/inscription'; value="Inscription"  /></td>
+						
 						
 					</tr>
 				</table>
