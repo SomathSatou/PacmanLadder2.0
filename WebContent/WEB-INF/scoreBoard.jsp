@@ -10,10 +10,10 @@
 </head>
 <body>
 	<!-- bandeau horizontal -->
-	<%@include file="lib/bandeauh.jsp"%>
+	<%@include file="bandeauh.jsp"%>
 
 	<!-- bandeau vertical -->
-	<%@include file="lib/bandeauv.jsp"%>
+	<%@include file="bandeauv.jsp"%>
 
 	<!-- page -->
 	<div class="page">

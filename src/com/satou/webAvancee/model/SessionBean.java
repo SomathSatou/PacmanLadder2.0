@@ -15,6 +15,9 @@ public class SessionBean {
         this.pseudo = pseudo;
         this.pwd = pwd;
 
+        System.out.println( pseudo );
+        System.out.println( pwd );
+
         if ( check( pseudo, pwd ) ) {
             this.login = true;
         } else {
@@ -23,12 +26,12 @@ public class SessionBean {
     }
 
     public boolean check( String p, String l ) {
-        if ( p == "test" ) {
-            if ( l == "1234" ) {
+        if ( p.equals( "test" ) ) {
+            if ( l.equals( "1234" ) ) {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public String getPseudo() {

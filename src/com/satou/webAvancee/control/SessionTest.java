@@ -44,6 +44,7 @@ public class SessionTest extends HttpServlet {
     protected void doAuth( HttpServletRequest request, HttpServletResponse response, String red )
             throws ServletException, IOException {
         // TODO Auto-generated method stub
+        System.out.println( red );
         this.getServletContext().getRequestDispatcher( red ).forward( request, response );
     }
 
@@ -56,19 +57,12 @@ public class SessionTest extends HttpServlet {
         // TODO Auto-generated method stub
         String pseudo = request.getParameter( PSEUDO_BAND );
         String password = request.getParameter( PWD_BAND );
-        String redirect = request.getParameter( REDIRECT );
-
-        System.out.println( redirect );
 
         HttpSession session = request.getSession();
         SessionBean sessionBean = new SessionBean( pseudo, password );
         session.setAttribute( LOG_SESSION, sessionBean );
-        if ( sessionBean.isLogin() ) {
-            doAuth( request, response, redirect );
 
-        } else {
-            doGet( request, response );
-        }
+        doGet( request, response );
     }
 
 }

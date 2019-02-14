@@ -10,10 +10,9 @@
 </head>
 <body>
 <!-- bandeau horizontal -->
-	<c:import url="lib/bandeauh.jsp"></c:import>
-
+	<c:import url="bandeauh.jsp"></c:import>
 	<!-- bandeau vertical -->
-	<c:import url="lib/bandeauv.jsp"></c:import>
+	<c:import url="bandeauv.jsp"></c:import>
 
 	<!-- page -->
 	<div class="page">

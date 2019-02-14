@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet( "/aurevoir" )
 public class Aurevoir extends HttpServlet {
     private static final long   serialVersionUID = 1L;
-    private static final String TEST_JSP         = "/WEB-INF/inscription.jsp";
+    private static final String TEST_JSP         = "/index.jsp";
 
     /**
      * @see HttpServlet#HttpServlet()

@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div class="bandeauh">
-		<a href="SoyLuna"><img class="logo"
-			src="resources/image/Pacman.jpg" alt="coucou" /></a>
+		<a href="/Pacman"><img class="logo"
+			src="/Pacman/resources/image/Pacman.jpg" alt="coucou" /></a>
 	</div>
 	<div class="bandeauh2">
 		<p>Pac-man Ladder</p>
@@ -37,11 +37,13 @@
 					<tr>
 						<td><label>Password:</label></td>
 						<td><input type="password" id="pwdh" name="pwdh" /></td>
-						<hiden id="redirect" name="redirect"><%= getServletContext().getRealPath("/") %></hiden>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="Submit" value="Connexion" /></td>
+						<td colspan="0.5"><input type="Submit" value="Connexion" />
+						<input type="Button" onclick=window.location.href='/Pacman/inscription'; value="Inscription"  /></td>
+						
+						
 					</tr>
 				</table>
 			</form>
