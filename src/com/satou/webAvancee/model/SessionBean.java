@@ -1,5 +1,9 @@
 package com.satou.webAvancee.model;
 
+import com.satou.webAvancee.dao.DAOException;
+import com.satou.webAvancee.dao.DAOFactory;
+import com.satou.webAvancee.dao.UserDao;
+
 public class SessionBean {
 
     private static final String PSEUDO_BAND = "pseudoh";
@@ -9,11 +13,13 @@ public class SessionBean {
     private String              pseudo;
     private String              pwd;
     private boolean             login;
+    private UserDao				userDao;
 
-    public SessionBean( String pseudo, String pwd ) {
+    public SessionBean( String pseudo, String pwd, UserDao userDao ) {
         super();
         this.pseudo = pseudo;
         this.pwd = pwd;
+        this.userDao = userDao;
 
         System.out.println( pseudo );
         System.out.println( pwd );
@@ -26,12 +32,7 @@ public class SessionBean {
     }
 
     public boolean check( String p, String l ) {
-        if ( p.equals( "test" ) ) {
-            if ( l.equals( "1234" ) ) {
-                return true;
-            }
-        }
-        return false;
+        return userDao.verifier(p, l);
     }
 
     public String getPseudo() {

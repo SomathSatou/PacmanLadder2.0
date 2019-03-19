@@ -7,5 +7,7 @@ public interface UserDao {
     void creer( Utilisateur utilisateur ) throws DAOException;
 
     Utilisateur trouver( String Pseudo ) throws DAOException;
+    
+    boolean verifier (String pseudo, String mdp ) throws DAOException;
 
 }
