@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.satou.webAvancee.dao.DAOFactory;
 import com.satou.webAvancee.model.SessionBean;
 
 /**
@@ -22,6 +23,8 @@ public class SessionTest extends HttpServlet {
     private static final String PWD_BAND         = "pwdh";
     private static final String LOG_SESSION      = "session";
     private static final String REDIRECT         = "redirect";
+    
+    public static final String CONF_DAO_FACTORY = "daofactory";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -59,7 +62,7 @@ public class SessionTest extends HttpServlet {
         String password = request.getParameter( PWD_BAND );
 
         HttpSession session = request.getSession();
-        SessionBean sessionBean = new SessionBean( pseudo, password );
+        SessionBean sessionBean = new SessionBean( pseudo, password, ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getUserDao() );
         session.setAttribute( LOG_SESSION, sessionBean );
 
         doGet( request, response );

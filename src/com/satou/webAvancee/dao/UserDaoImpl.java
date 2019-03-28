@@ -75,6 +75,32 @@ public class UserDaoImpl implements UserDao {
 
 	    return utilisateur;
 	}
+	
+	private static final String SQL_SELECT_PAR_MDP = "SELECT id, pseudo, nom, prenom, mail, mot_de_passe FROM User WHERE pseudo = ? AND mot_de_passe = ?";
+	@Override
+	public boolean verifier(String pseudo, String mdp) throws DAOException {
+		
+	    Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_PAR_MDP, false, pseudo, mdp);
+	        resultSet = preparedStatement.executeQuery();
+	        /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+	        if ( resultSet.next() ) {
+	            return(true);
+	        }
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
+
+	    return (false);
+	}
 
 	/*
 	 * Simple méthode utilitaire permettant de faire la correspondance (le
@@ -92,4 +118,5 @@ public class UserDaoImpl implements UserDao {
 	    utilisateur.setPseudo( resultSet.getString( "pseudo" ) );
 	    return utilisateur;
 	}
+
 }
