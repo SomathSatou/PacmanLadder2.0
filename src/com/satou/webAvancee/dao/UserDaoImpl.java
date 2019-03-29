@@ -18,7 +18,7 @@ public class UserDaoImpl implements UserDao {
         this.daoFactory = daoFactory;
     }
 
-    private static final String SQL_INSERT = "INSERT INTO User (pseudo, nom, prenom, mail, mot_de_passe) VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO User (pseudo, nom, prenom, mail, mot_de_passe) VALUES (?, ?, ?, ?, MD5(?))";
 	@Override
 	public void creer(Utilisateur utilisateur) throws DAOException {
 	    Connection connexion = null;

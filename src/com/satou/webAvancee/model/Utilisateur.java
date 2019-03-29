@@ -37,7 +37,10 @@ public class Utilisateur {
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		if(nom != null)
+			this.nom = nom;
+		else
+			this.nom = "";
 	}
 
 	public String getPrenom() {
@@ -45,7 +48,10 @@ public class Utilisateur {
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+		if(prenom != null)
+			this.prenom = prenom;
+		else
+			this.nom = "";
 	}
 
 	public String getMail() {

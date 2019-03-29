@@ -16,7 +16,7 @@ public class GameDaoImpl implements GameDao {
 		this.daoFactory = daoFactory;
 	}
 
-	private static final String SQL_SELECT = "SELECT id, map, joueur, resultat, score, datejeu FROM Game";
+	private static final String SQL_SELECT = "SELECT id, map, joueur, resultat, score, datejeu FROM Game ORDER BY score DESC";
 	@Override
 	public ArrayList<Partie> toutTrouver() throws DAOException {
 
@@ -43,17 +43,91 @@ public class GameDaoImpl implements GameDao {
 	    return parties;
 	}
 
-	private static final String SQL_SELECT_PSEUDO = "SELECT id, map, joueur, resultat, score, datejeu FROM Game WHERE joueur = ?";
+	private static final String SQL_SELECT_PSEUDO = "SELECT id, map, joueur, resultat, score, datejeu FROM Game WHERE joueur = ? ORDER BY score DESC";
 	@Override
 	public ArrayList<Partie> trouver(String pseudo) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    ArrayList<Partie> parties = new ArrayList<Partie>();
+	    
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_PSEUDO, false, pseudo );
+	        resultSet = preparedStatement.executeQuery();
+	        /* Parcours de la ligne de données des éventuel ResulSet retourné */
+	        while ( resultSet.next() ) {
+	            parties.add(map( resultSet ));
+	        }
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
+
+	    return parties;
+	}
+
+	private static final String SQL_SELECT_RECENT = "SELECT id, map, joueur, resultat, score, datejeu ORDER BY datejeu DESC";
+	@Override
+	public ArrayList<Partie> trouverRecent() throws DAOException {
+
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    ArrayList<Partie> parties = new ArrayList<Partie>();
+	    
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_RECENT, false );
+	        resultSet = preparedStatement.executeQuery();
+	        /* Parcours de la ligne de données des éventuel ResulSet retourné */
+	        while ( resultSet.next() ) {
+	            parties.add(map( resultSet ));
+	        }
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
+
+	    return parties;
+	}
+
+	private static final String SQL_SELECT_WEEK = "SELECT id, map, joueur, resultat, score, datejeu FROM Game WHERE WEEK(DATE(datejeu))=WEEK(CURDATE()) ORDER BY score DESC";
+	@Override
+	public ArrayList<Partie> trouverCetteSemaine() throws DAOException {
+
+		Connection connexion = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    ArrayList<Partie> parties = new ArrayList<Partie>();
+	    
+	    try {
+	        /* Récupération d'une connexion depuis la Factory */
+	        connexion = daoFactory.getConnection();
+	        preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_SELECT_WEEK, false );
+	        resultSet = preparedStatement.executeQuery();
+	        /* Parcours de la ligne de données des éventuel ResulSet retourné */
+	        while ( resultSet.next() ) {
+	            parties.add(map( resultSet ));
+	        }
+	    } catch ( SQLException e ) {
+	        throw new DAOException( e );
+	    } finally {
+	        DAOUtilitaire.fermeturesSilencieuses( resultSet, preparedStatement, connexion );
+	    }
+
+	    return parties;
 	}
 	
 	/*
 	 * Simple méthode utilitaire permettant de faire la correspondance (le
-	 * mapping) entre une ligne issue de la table des utilisateurs (un
-	 * ResultSet) et un bean Utilisateur.
+	 * mapping) entre une ligne issue de la table des jeux (un
+	 * ResultSet) et un bean Partie.
 	 */
 	private static Partie map( ResultSet resultSet ) throws SQLException {
 	    Partie partie = new Partie();
