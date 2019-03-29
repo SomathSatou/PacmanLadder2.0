@@ -8,5 +8,9 @@ public interface GameDao {
 	ArrayList<Partie> toutTrouver() throws DAOException;
 	
 	ArrayList<Partie> trouver(String pseudo) throws DAOException;
+	
+	ArrayList<Partie> trouverRecent() throws DAOException;
+	
+	ArrayList<Partie> trouverCetteSemaine() throws DAOException;
 
 }
