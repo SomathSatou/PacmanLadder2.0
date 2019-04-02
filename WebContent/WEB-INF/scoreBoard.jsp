@@ -17,8 +17,29 @@
 
 	<!-- page -->
 	<div class="page">
-		<div class="titrep">Tableau des scores</div>
-
+	
+	<div class="titrep">Tableau des scores</div>
+	
+		<table class="scores" >
+			<tr>
+				<td>Map</td><td>Joueur</td><td>Résultat</td><td>Score</td><td>Date</td>
+			</tr>
+			
+					
+    		<c:forEach items="${scores}" var="elt">
+    		
+    			<tr>
+					<td>${ elt.map }</td>
+					<td>${ elt.joueur }</td>
+					<td>${ elt.resultat }</td>
+					<td>${ elt.score }</td>
+					<td>${ elt.date }</td>
+				</tr>
+				
+    		</c:forEach>
+		
+		</table>
+		
 		<!-- bandeau bas de page -->
 		<a Class="bandeaub"
 			href="http://jigsaw.w3.org/css-validator/check/referer"> <img

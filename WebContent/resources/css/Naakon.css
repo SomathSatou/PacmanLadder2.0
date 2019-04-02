@@ -135,3 +135,14 @@ fieldset {
 	right: 255 px;
 	height: 600px;*/
 }
+
+.scores {
+border-collapse: collapse;
+border: medium solid #000000;
+width: 80%;
+}
+.scores td, th {
+	
+border: thin solid #ff0b04;
+width: 20%;
+}
